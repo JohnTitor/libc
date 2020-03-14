@@ -3,7 +3,6 @@ use unix::bsd::O_SYNC;
 pub type clock_t = i64;
 pub type suseconds_t = ::c_long;
 pub type dev_t = i32;
-pub type sigset_t = ::c_uint;
 pub type blksize_t = i32;
 pub type fsblkcnt_t = u64;
 pub type fsfilcnt_t = u64;

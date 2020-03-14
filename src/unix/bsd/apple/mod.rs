@@ -12,7 +12,6 @@ pub type nlink_t = u16;
 pub type blksize_t = i32;
 pub type rlim_t = u64;
 pub type pthread_key_t = c_ulong;
-pub type sigset_t = u32;
 pub type clockid_t = ::c_uint;
 pub type fsblkcnt_t = ::c_uint;
 pub type fsfilcnt_t = ::c_uint;
