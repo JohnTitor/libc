@@ -33,13 +33,19 @@ s! {
         pub ai_protocol: ::c_int,
         pub ai_addrlen: socklen_t,
 
-        #[cfg(not(all(target_arch = "powerpc", target_vendor = "nintendo")))]
+        #[cfg(
+            all(libc_cfg_target_vendor,
+            not(all(target_arch = "powerpc", target_vendor = "nintendo")))
+        )]
         #[cfg(target_arch = "xtensa")]
         pub ai_addr: *mut sockaddr,
 
         pub ai_canonname: *mut ::c_char,
 
-        #[cfg(not(all(target_arch = "powerpc", target_vendor = "nintendo")))]
+        #[cfg(
+            all(libc_cfg_target_vendor,
+            not(all(target_arch = "powerpc", target_vendor = "nintendo")))
+        )]
         #[cfg(not(target_arch = "xtensa"))]
         pub ai_addr: *mut sockaddr,
 
@@ -600,7 +606,10 @@ extern "C" {
     pub fn rand() -> ::c_int;
     pub fn srand(seed: ::c_uint);
 
-    #[cfg(not(all(target_arch = "powerpc", feature = "target-vendor", target_vendor = "nintendo")))]
+    #[cfg(
+        all(libc_cfg_target_vendor,
+        not(all(target_arch = "powerpc", target_vendor = "nintendo")))
+    )]
     pub fn bind(fd: ::c_int, addr: *const sockaddr, len: socklen_t)
         -> ::c_int;
     pub fn clock_settime(
@@ -617,7 +626,10 @@ extern "C" {
     ) -> ::c_int;
     pub fn closesocket(sockfd: ::c_int) -> ::c_int;
     pub fn ioctl(fd: ::c_int, request: ::c_ulong, ...) -> ::c_int;
-    #[cfg(not(all(target_arch = "powerpc", feature = "target-vendor", target_vendor = "nintendo")))]
+    #[cfg(
+        all(libc_cfg_target_vendor,
+        not(all(target_arch = "powerpc", target_vendor = "nintendo")))
+    )]
     pub fn recvfrom(
         fd: ::c_int,
         buf: *mut ::c_void,
@@ -626,7 +638,10 @@ extern "C" {
         addr: *mut sockaddr,
         addr_len: *mut socklen_t,
     ) -> isize;
-    #[cfg(not(all(target_arch = "powerpc", feature = "target-vendor", target_vendor = "nintendo")))]
+    #[cfg(
+        all(libc_cfg_target_vendor,
+        not(all(target_arch = "powerpc", target_vendor = "nintendo")))
+    )]
     pub fn getnameinfo(
         sa: *const sockaddr,
         salen: socklen_t,

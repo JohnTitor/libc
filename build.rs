@@ -81,6 +81,11 @@ fn main() {
         }
         println!("cargo:rustc-cfg=libc_const_extern_fn");
     }
+
+    // Rust >= 1.33 supports `cfg(target_vendor)`.
+    if rustc_minor_ver >= 33 || rustc_dep_of_std {
+        println!("cargo:rustc-cfg=libc_cfg_target_vendor");
+    }
 }
 
 fn rustc_minor_nightly() -> Option<(u32, bool)> {
