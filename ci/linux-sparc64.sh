@@ -5,7 +5,7 @@ set -ex
 mkdir -m 777 /qemu
 cd /qemu
 
-curl --retry 5 -LO https://cdimage.debian.org/cdimage/ports/2020-04-19/debian-10.0-sparc64-NETINST-1.iso
+curl --retry 5 -LO https://cdimage.debian.org/cdimage/ports/current/debian-10.0.0-sparc64-NETINST-1.iso
 7z e debian-10.0-sparc64-NETINST-1.iso install/initrd.gz
 7z e debian-10.0-sparc64-NETINST-1.iso install/vmlinux
 mv vmlinux kernel
